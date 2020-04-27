@@ -1,0 +1,17 @@
+<h2>Register your apartment:</h2>
+<p>Name</p>
+<input #name type="text">
+<br>
+<p>Description:</p>
+<input #description type="text">
+<br>
+<p>Number of rooms:</p>
+<input #maxPersons type="number">
+<p>Longitude:</p>
+<input #longitude type="number">
+<p>Latitude:</p>
+<input #latitude type="number">
+<br>
+<button (click)="addFlat(name.value,description.value,Number(maxPersons.value),Number(latitude.value),Number(longitude.value))">REGISTER FLAT!</button>
+
+

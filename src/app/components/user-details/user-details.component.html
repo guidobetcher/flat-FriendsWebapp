@@ -1,0 +1,8 @@
+<div>
+  <h2>{{user.firstname}} {{user.lastname}}</h2>
+  <p>Email: {{user.email}}</p>
+  <p>Phone: {{user.phoneNumber}}</p>
+  <p *ngIf="user.idPiso">It is a member of a flat</p>
+  <p *ngIf="!user.idPiso">It is not a member of a flat</p>
+</div>
+

@@ -1,0 +1,33 @@
+<h1>Welcome to Flat&Friends</h1>
+<p>Complete the register:</p>
+<label>
+    Firstname:
+    <input type="text" [formControl]="firstname">
+</label>
+<p></p>
+<label>
+    Lastname:
+<input type="text" [formControl]="lastname">
+</label>
+<p></p>
+ <label>
+    Email:
+ <input type="text" [formControl]="email">
+</label>
+<p></p>
+<label>
+    PhoneNumber:
+<input type="text" [formControl]="phone">
+</label>
+<p></p>
+<label>
+    Password:
+    <input #password2 (keyup)="0" type="password" [formControl]="password">
+</label>
+<label>
+  Repeat your password:
+  <input #password1 (keyup)="0" type="password">
+</label>
+<p></p>
+<button [disabled]="password1.value !== password2.value" (click)="addUser()">REGISTER!</button>
+

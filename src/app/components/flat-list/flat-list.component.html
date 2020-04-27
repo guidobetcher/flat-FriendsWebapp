@@ -1,0 +1,10 @@
+<div *ngFor="let flat of flats">
+  <app-flat-details [flat]="flat"></app-flat-details>
+  <br>
+  <button (click)="addTenant(flat)">Add me</button>
+</div>
+<br>
+<a (click)="flatAdded()">(+)</a>
+<div *ngIf="addingFlat" >
+  <app-flat-register (flatAdded)="switchAddingFlat()"></app-flat-register>
+</div>

@@ -1,0 +1,22 @@
+<button (click)="switchShowProfile()">My Profile</button>
+<br>
+<div *ngIf="showProfile">
+  <app-user-details [user]="user"></app-user-details>
+  <a (click)="switchPasswordChange()">Change my password</a>
+  <app-password-change *ngIf="passwordChange" [user]="user"></app-password-change>
+</div>
+
+<div *ngIf="!user.idPiso">
+  <button (click)="searchFlat()">Search an available flat id piso:{{user.idPiso}}</button>
+  <app-flat-list *ngIf="lookingForFlat" [inputUser]="user" (returnToMain)="addedToFlat()"></app-flat-list>
+</div>
+
+<div *ngIf="user.idPiso">
+  <button (click)="showMyFlat()">My Flat</button>
+  <div *ngIf="flatDetails">
+    <app-flat-details [flat]="flat"></app-flat-details>
+    <button (click)="deleteFlat(flat._id)">Delete Flat</button>
+  </div>
+</div>
+
+
