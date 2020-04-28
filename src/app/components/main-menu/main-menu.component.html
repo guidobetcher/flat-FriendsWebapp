@@ -3,15 +3,15 @@
 <div *ngIf="showProfile">
   <app-user-details [user]="user"></app-user-details>
   <a (click)="switchPasswordChange()">Change my password</a>
-  <app-password-change *ngIf="passwordChange" [user]="user"></app-password-change>
+  <app-password-change *ngIf="passwordChange" [user]="user" (finish)="switchPasswordChange()"></app-password-change>
 </div>
 
-<div *ngIf="!user.idPiso">
+<div *ngIf="!hasFlat()">
   <button (click)="searchFlat()">Search an available flat id piso:{{user.idPiso}}</button>
-  <app-flat-list *ngIf="lookingForFlat" [inputUser]="user" (returnToMain)="addedToFlat()"></app-flat-list>
+  <app-flat-list *ngIf="lookingForFlat" [inputUser]="user" (returnToMain)="loadUser()"></app-flat-list>
 </div>
 
-<div *ngIf="user.idPiso">
+<div *ngIf="hasFlat()">
   <button (click)="showMyFlat()">My Flat</button>
   <div *ngIf="flatDetails">
     <app-flat-details [flat]="flat"></app-flat-details>

@@ -28,9 +28,11 @@ export class FlatListComponent implements OnInit {
 
   async addTenant(flat: Flat) {
     console.log(this.inputUser);
-    await this.flatService.addTenant(this.inputUser._id, flat._id).subscribe(result => {this.result = result; });
+    await this.flatService.addTenant(this.inputUser._id, flat._id).subscribe(result => {
+      this.result = result;
+      this.returnToMain.emit();
+    });
     console.log(this.inputUser.firstname + ' was added to ' + flat.name);
-    await this.returnToMain.emit();
   }
 
   switchAddingFlat() {

@@ -10,7 +10,6 @@ import { User } from '../models/user';
 export class UserService {
 
   userUrl: RootUrl;
-  UserAdd: User;
 
   constructor(
     private http: HttpClient,
@@ -18,16 +17,16 @@ export class UserService {
     this.userUrl = new RootUrl('user/');
   }
 
-  registerUser(UserAdd: User): Observable<any> {
+  registerUser(user: User): Observable<any> {
     console.log('REGISTER NEW USER');
     const url = this.userUrl.rootUrl + 'addUser/';
-    console.log(url);
     return this.http.post(url, {
-      firstname: UserAdd.firstname,
-      lastname: UserAdd.lastname,
-      email: UserAdd.email,
-      phoneNumber: UserAdd.phoneNumber,
-      password:  UserAdd.password
+      firstname: user.firstname,
+      lastname: user.lastname,
+      email: user.email,
+      idPiso: user.idPiso,
+      phoneNumber: user.phoneNumber,
+      password:  user.password
     });
   }
 

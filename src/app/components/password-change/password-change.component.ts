@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {User} from '../../models/user';
 import {FormControl} from '@angular/forms';
 import {UserService} from '../../services/user.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-password-change',
@@ -10,8 +11,9 @@ import {UserService} from '../../services/user.service';
 })
 export class PasswordChangeComponent implements OnInit {
   @Input() user: User;
+  @Output() finish = new EventEmitter();
   newPassword = new FormControl('');
-  result: { 'message': '--'};
+  result: any;
 
   constructor(
     private userService: UserService
@@ -22,7 +24,7 @@ export class PasswordChangeComponent implements OnInit {
 
   changePassword() {
     this.user.password = this.newPassword.value;
-    console.log(this.user);
     this.userService.updateUser(this.user).subscribe(result => this.result = result);
+    this.finish.emit();
   }
 }

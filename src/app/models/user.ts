@@ -6,5 +6,5 @@ export class User {
     phoneNumber: string;
     idPiso: string;
     password: string;
-    User(){}
+    User() {}
 }

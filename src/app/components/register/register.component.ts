@@ -16,26 +16,25 @@ export class RegisterComponent implements OnInit {
   public email = new FormControl('');
   public password = new FormControl('');
   public phone = new FormControl('');
-  public UserAdd: User;
+  public user: User;
   constructor(
     private userService: UserService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.UserAdd = new User();
+    this.user = new User();
   }
 
    addUser(){
-    this.UserAdd.firstname = this.firstname.value;
-    this.UserAdd.lastname = this.lastname.value;
-    this.UserAdd.email = this.email.value;
-    this.UserAdd.phoneNumber = this.phone.value;
-    this.UserAdd.password = this.password.value;
-    console.log('Parsed all the values');
-    console.log(this.UserAdd.firstname);
+    this.user.firstname = this.firstname.value;
+    this.user.lastname = this.lastname.value;
+    this.user.email = this.email.value;
+    this.user.phoneNumber = this.phone.value;
+    this.user.password = this.password.value;
+    this.user.idPiso = '-1';
 
-    this.userService.registerUser(this.UserAdd).subscribe(
+    this.userService.registerUser(this.user).subscribe(
       (data) => {
              console.log('data: ', data);
              this.router.navigateByUrl('/login');

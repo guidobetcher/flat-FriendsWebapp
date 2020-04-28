@@ -45,11 +45,19 @@ export class MainMenuComponent implements OnInit {
     });
   }
 
-  async deleteFlat(_id: string) {
-    await this.flatService.deleteFlat(_id).subscribe(() => console.log('Flat deleted'),
+  deleteFlat(_id: string) {
+    this.flatService.deleteFlat(_id).subscribe(() => {
+        console.log('Flat deleted');
+        this.loadUser();
+      },
       (err) => console.log(err)
     );
-    await this.loadUser();
+  }
+  hasFlat() {
+    console.log('Has flat: id piso: ', this.user.idPiso);
+    const ret = this.user.idPiso != null;
+    console.log(ret);
+    return ret;
   }
 
   async loadUser() {
@@ -67,15 +75,12 @@ export class MainMenuComponent implements OnInit {
     console.log(this.user);
   }
 
-  async addedToFlat() {
-    await this.loadUser();
-  }
-
   switchShowProfile() {
     this.showProfile = !this.showProfile;
   }
 
   switchPasswordChange() {
     this.passwordChange = !this.passwordChange;
+    console.log(this.passwordChange);
   }
 }
